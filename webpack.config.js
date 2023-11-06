@@ -118,6 +118,17 @@ Encore.enableSourceMaps(!Encore.isProduction())
 |
 */
 Encore.enableVersioning(Encore.isProduction())
+/*
+|--------------------------------------------------------------------------
+| CSS loaders
+|--------------------------------------------------------------------------
+|
+| Uncomment one of the following line of code to enable support for
+| PostCSS or CSS.
+|
+*/
+Encore.enablePostCssLoader();
+// Encore.configureCssLoader(() => {})
 
 /*
 |--------------------------------------------------------------------------
