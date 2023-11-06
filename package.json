@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "node ace serve --watch",
+    "dev": "docker compose up -d && node ace serve --watch",
     "build": "node ace build --production",
     "start": "node server.js",
     "test": "node ace test",
@@ -67,6 +67,7 @@
   },
   "dependencies": {
     "@adonisjs/core": "^5.9.0",
+    "@adonisjs/lucid": "^18.4.2",
     "@adonisjs/repl": "^3.1.11",
     "@adonisjs/session": "^6.4.0",
     "@adonisjs/shield": "^7.1.1",
@@ -75,6 +76,8 @@
     "@inertiajs/react": "^1.0.14",
     "@types/react": "^18.2.36",
     "@types/react-dom": "^18.2.14",
+    "luxon": "^3.4.3",
+    "pg": "^8.11.3",
     "proxy-addr": "^2.0.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
