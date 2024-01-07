@@ -1,18 +1,26 @@
 {
-  "extends": "adonis-preset-ts/tsconfig.json",
   "include": ["**/*"],
-  "exclude": ["node_modules", "build", "resources/ui"],
   "compilerOptions": {
-    "outDir": "build",
-    "rootDir": "./",
-    "downlevelIteration": true,
-    "sourceMap": true,
+    "target": "es5",
+    "composite": true,
+
     "paths": {
       "App/*": ["./app/*"],
-      "Config/*": ["./config/*"],
       "Contracts/*": ["./contracts/*"],
-      "Database/*": ["./database/*"]
+      "models/*": ["./app/Models/*"],
+      "json/*": ["./resources/json/*"],
+      "@/*": ["./resources/ui/*"],
+      "~/*": ["./resources/*"]
     },
+    "baseUrl": ".",
+    "downlevelIteration": true,
+
+    "lib": ["DOM"],
+    "jsx": "react",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+
     "types": [
       "@adonisjs/core",
       "@adonisjs/repl",

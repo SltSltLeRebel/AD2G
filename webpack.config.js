@@ -45,9 +45,7 @@ Encore.setPublicPath('/assets')
 | entrypoints.
 |
 */
-Encore.addEntry('app', './resources/js/app.js')
-
-Encore.enableReactPreset()
+Encore.addEntry('app', './resources/ui/app.tsx')
 
 /*
 |--------------------------------------------------------------------------
@@ -118,17 +116,6 @@ Encore.enableSourceMaps(!Encore.isProduction())
 |
 */
 Encore.enableVersioning(Encore.isProduction())
-/*
-|--------------------------------------------------------------------------
-| CSS loaders
-|--------------------------------------------------------------------------
-|
-| Uncomment one of the following line of code to enable support for
-| PostCSS or CSS.
-|
-*/
-Encore.enablePostCssLoader();
-// Encore.configureCssLoader(() => {})
 
 /*
 |--------------------------------------------------------------------------
@@ -182,7 +169,7 @@ Encore.configureDevServerOptions((options) => {
 | PostCSS or CSS.
 |
 */
-// Encore.enablePostCssLoader()
+Encore.enablePostCssLoader()
 // Encore.configureCssLoader(() => {})
 
 /*
@@ -199,6 +186,18 @@ Encore.configureDevServerOptions((options) => {
 //   runtimeCompilerBuild: false,
 //   useJsx: false
 // })
+
+/*
+|--------------------------------------------------------------------------
+| Enable React loader
+|--------------------------------------------------------------------------
+|
+*/
+Encore.enableReactPreset()
+  .enableTypeScriptLoader((config) => {
+    config.configFile = join(__dirname, './tsconfig.react.json')
+  })
+  .addAliases({ '@': join(__dirname, './resources/ui'), '~': join(__dirname, './resources') })
 
 /*
 |--------------------------------------------------------------------------

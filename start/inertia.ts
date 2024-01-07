@@ -8,10 +8,19 @@
 |
 */
 
-import Inertia from '@ioc:EidelLev/Inertia';
+import Inertia from '@ioc:EidelLev/Inertia'
 
 Inertia.share({
   errors: (ctx) => {
-    return ctx.session.flashMessages.get('errors');
+    return ctx.session.flashMessages.get('errors') || {}
   },
-}).version(() => Inertia.manifestFile('public/assets/manifest.json'));
+  flashMessages: (ctx) => {
+    return ctx.session.flashMessages.all() || {}
+  },
+  // user: (ctx) => {
+  //   return ctx.auth.user || null
+  // },
+  qs: (ctx) => {
+    return ctx.request.qs()
+  },
+}).version(() => Inertia.manifestFile('public/assets/manifest.json'))

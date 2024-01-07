@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "label": "Lawful good"
+  },
+  {
+    "id": "2",
+    "label": "Lawful neutral"
+  },
+  {
+    "id": "3",
+    "label": "Lawful evil"
+  },
+  {
+    "id": "4",
+    "label": "Neutral good"
+  },
+  {
+    "id": "5",
+    "label": "Neutral neutral"
+  },
+  {
+    "id": "6",
+    "label": "Neutral chaotic"
+  },
+  {
+    "id": "7",
+    "label": "Chaotic good"
+  },
+  {
+    "id": "8",
+    "label": "Chaotic neutral"
+  },
+  {
+    "id": "9",
+    "label": "Chaotic evil"
+  }
+]
