@@ -5,7 +5,7 @@ export default class SignInController {
     return inertia.render('SignIn')
   }
 
-  public async handle({ auth, request, response }: HttpContextContract) {
+  public async handle({ auth, request, response, session }: HttpContextContract) {
     const email = request.input('email')
     const password = request.input('password')
 
@@ -13,6 +13,7 @@ export default class SignInController {
       await auth.use('web').attempt(email, password)
       return response.redirect().toRoute('characters.create')
     } catch {
+      session.flash('errors.auth', 'Invalid login or password')
       return response.redirect().back()
     }
   }
