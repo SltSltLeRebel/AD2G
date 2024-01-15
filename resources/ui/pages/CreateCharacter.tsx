@@ -123,7 +123,7 @@ export default function CreateCharacter() {
         <div className="grid sm:grid-cols-3 gap-4">
           <SkillField ability="Strength" skillList={['Athletics']} />
           <SkillField
-            ability={'Dextew  rity'}
+            ability={'Dexterity'}
             skillList={['Acrobatics', 'Sleight of Hand', 'Stealth']}
           />
           <SkillField ability="Constitution" />

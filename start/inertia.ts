@@ -17,9 +17,9 @@ Inertia.share({
   flashMessages: (ctx) => {
     return ctx.session.flashMessages.all() || {}
   },
-  // user: (ctx) => {
-  //   return ctx.auth.user || null
-  // },
+  user: (ctx) => {
+    return ctx.auth.user || null
+  },
   qs: (ctx) => {
     return ctx.request.qs()
   },
