@@ -9,6 +9,7 @@ export interface FieldProps {
   placeholder?: string
   className?: string
   value?: string | number
+  inputClassName?: string
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
@@ -22,6 +23,7 @@ export default function Field({
   children,
   value,
   className,
+  inputClassName,
   onChange,
 }: React.PropsWithChildren<FieldProps>) {
   return (
@@ -39,7 +41,8 @@ export default function Field({
           min={min}
           max={max}
           className={
-            'shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md  ' +
+            inputClassName +
+            ' shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md  ' +
             className
           }
           placeholder={placeholder}

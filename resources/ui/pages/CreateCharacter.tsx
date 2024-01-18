@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import AbilityField from '../components/AbilityField'
 import SkillField from '../components/SkillField'
 import Field from '../components/Field'
@@ -30,7 +30,26 @@ export default function CreateCharacter() {
       [e.target.id]: e.target.type === 'number' ? parseInt(e.target.value) : e.target.value,
     })
   }
-
+  const RandomizeAbilityValue = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    const ability = {
+      strength: 0,
+      dexterity: 0,
+      constitution: 0,
+      wisdom: 0,
+      intelligence: 0,
+      charisma: 0,
+    }
+    Object.keys(ability).forEach((key) => {
+      const randomArray: number[] = []
+      for (let idx = 0; idx < 4; idx++) {
+        randomArray.push(Math.round(Math.random() * 6))
+      }
+      randomArray.sort().reverse()
+      ability[key] = randomArray[0] + randomArray[1] + randomArray[2]
+    })
+    setFormValues(ability)
+  }
   return (
     <div className="sm:max-w-5xl mx-auto m-4">
       <form className="space-y-2">
@@ -54,7 +73,33 @@ export default function CreateCharacter() {
           <Field id="playerName" label="Player Name"></Field>
         </div>
         {/* Ability Score */}
-        <h2 className="text-3xl font-bold text-primary">Ability</h2>
+        <div className="display flex inline-block items-center">
+          <h2 className="text-3xl font-bold text-primary">Ability</h2>
+          <button
+            className="bg-primary flex justify-center items-center py-2 my-1 mx-2 px-2 text-white hover:opacity-75 transition-opacity rounded-md "
+            onClick={(e) => RandomizeAbilityValue(e)}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="icon icon-tabler icon-tabler-dice"
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              strokeWidth="2"
+              stroke="currentColor"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M3 3m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" />
+              <circle cx="8.5" cy="8.5" r=".5" fill="currentColor" />
+              <circle cx="15.5" cy="8.5" r=".5" fill="currentColor" />
+              <circle cx="15.5" cy="15.5" r=".5" fill="currentColor" />
+              <circle cx="8.5" cy="15.5" r=".5" fill="currentColor" />
+            </svg>
+          </button>
+        </div>
 
         <div className="grid sm:grid-cols-3 gap-4">
           <AbilityField
