@@ -4,11 +4,14 @@ import SkillField from '../components/SkillField'
 import Field from '../components/Field'
 import RacesSelector from '../components/RacesField'
 import Selector from '../components/SelectField'
+import { Inertia } from '@inertiajs/inertia'
 
 var classes = require('../json/class.json')
 var alignment = require('../json/alignement.json')
 export default function CreateCharacter() {
   const [formValues, setFormValues] = React.useState<{
+    name: string
+
     strength: number
     dexterity: number
     constitution: number
@@ -16,6 +19,8 @@ export default function CreateCharacter() {
     intelligence: number
     charisma: number
   }>({
+    name: '',
+
     strength: 0,
     dexterity: 0,
     constitution: 0,
@@ -48,14 +53,20 @@ export default function CreateCharacter() {
       randomArray.sort().reverse()
       ability[key] = randomArray[0] + randomArray[1] + randomArray[2]
     })
-    setFormValues(ability)
+    setFormValues({ ...formValues, ...ability })
   }
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    Inertia.post('/characters/store', formValues)
+  }
+
   return (
     <div className="sm:max-w-5xl mx-auto m-4">
-      <form className="space-y-2">
+      <form className="space-y-2" onSubmit={handleSubmit}>
         {/* Global Information */}
         <h2 className="text-3xl font-bold text-primary">Global information</h2>
-        <Field id="name" label="Name"></Field>
+        <Field id="name" label="Name" value={formValues.name} onChange={handleChange} />
         <div className="grid sm:grid-cols-3 gap-4">
           <RacesSelector />
           <Selector
@@ -100,7 +111,6 @@ export default function CreateCharacter() {
             </svg>
           </button>
         </div>
-
         <div className="grid sm:grid-cols-3 gap-4">
           <AbilityField
             id="strength"
@@ -162,7 +172,6 @@ export default function CreateCharacter() {
             onChange={handleChange}
           />
         </div>
-
         {/* Skills */}
         <h2 className="text-3xl font-bold text-primary">Skills</h2>
         <div className="grid sm:grid-cols-3 gap-4">
@@ -185,7 +194,7 @@ export default function CreateCharacter() {
             skillList={['Deception', 'Intimidation', 'Performance', 'Persuasion']}
           />
         </div>
-
+        <button type="submit">Create</button>{' '}
         <div className="flex items-end">
           <button
             type="button"

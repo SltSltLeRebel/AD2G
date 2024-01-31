@@ -1,0 +1,19 @@
+{
+  "Ability": {
+    "strengh": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "wisdom": 0,
+    "intelligence": 0,
+    "charisma": 0
+  },
+  "AblilityMastery": [],
+  "Skill": {
+    "strengh": [],
+    "dexterity": [],
+    "constitution": [],
+    "wisdom": [],
+    "intelligence": [],
+    "charisma": []
+  }
+}

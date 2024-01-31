@@ -12,6 +12,7 @@ export default function SkillField({ skillList, ability }: SkillProps) {
     <div className="border border-gray-300 bg-white rounded-md">
       <div className=" text-center flex items-center border-b border-gray-300 bg-gray-50 rounded-t-md">
         <h3 className="space-x-1 px-2 py-1 font-semibold text-grey ">{ability}</h3>
+        <input type="hidden" value={ability}></input>
         <input
           id={ability}
           type="checkbox"
